@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html  lang="en">
+<head>
+  <!-- Site made with Mobirise Website Builder v6.1.4, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v6.1.4, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/logo5.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>General Scoreboard</title>
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Inter+Tight:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter+Tight:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=VJFeXH"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=VJFeXH" type="text/css">
+
+  
+  
+  
+</head>
+<body>
+  
+  <section data-bs-version="5.1" class="menu menu5 cid-uY4nBoucLN" once="menu" id="menu05-c">
+	
+
+	<nav class="navbar navbar-dropdown navbar-expand-lg">
+		<div class="container">
+			<div class="navbar-brand">
+				<span class="navbar-logo">
+					
+						<a href="index.html"><img src="assets/images/western-mindanao-state-university-260x260.png" alt="WMSU Logo" style="height: 3.4rem;"></a>
+					
+				</span>
+				<span class="navbar-caption-wrap"><a class="navbar-caption text-black display-4" href="https://mobiri.se">WMSU Palaro 2025<br>Online Live Scoreboard</a></span>
+			</div>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+				<div class="hamburger">
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item">
+						<a class="nav-link link text-black text-primary display-4" href="page1.html">Home</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link link text-black text-primary display-4" href="page2.html" aria-expanded="false">General</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link link text-black text-primary display-4" href="page3.html">College</a>
+					</li></ul>
+				
+			</div>
+		</div>
+	</nav>
+</section>
+
+<section data-bs-version="5.1" class="article11 cid-uY4nBo3xqu" id="article11-b">
+    
+
+    
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-4">
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="article11 cid-uY5TjVnjqs" id="article11-s">
+    
+
+    
+    
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-10">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mt-0 mb-0 display-2">
+                <strong>General Scoreboard</strong></h3>
+                
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content4 cid-uY5TbVoYf1" id="custom-html-r">
+    <div class="mbr-overlay" style="opacity: 0.7; background-color: #ffffff;"></div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-10">
+                
+                <div id="sports-container" class="sports-container d-flex flex-wrap justify-content-center">
+                    <!-- Intramural games will load here dynamically -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section><style class="cid-uY5TbVoYf1" id="custom-html-r" data-rv-view="188">
+    .sports-container {
+        display: flex;
+        flex-direction: column; /* Stack sports vertically */
+        align-items: center;    /* Center the sports */
+    }
+    .sport-group {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap; /* Allow wrapping to next line */
+        gap: 20px; /* Space between cards */
+        margin-bottom: 30px; /* Space between sport groups */
+        max-width: 100%;
+    }
+    .team-card {
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+</style><script class="cid-uY5TbVoYf1" id="custom-html-r" data-rv-view="188">
+    const sheetId = '1EJfto3fshSHuYLUwWLCb7JaDmFKQdXJlunMlyNOwYx8';  // Replace with your Google Sheet ID
+    const apiKey = 'AIzaSyB1A4QxXCsSpXPvZ0SNeLtJs6GnJJO-JyQ';       // Replace with your Google Sheets API key
+    const range = 'GenScore!A2:G1000';                                     // Range for intramural sports data
+    const updateInterval = 2000; // Update every 2 seconds
+
+    const sheetUrl = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}?key=${apiKey}`;
+
+    let lastDataHash = null; // Store hash of last data to detect changes
+
+    function getDataHash(data) {
+        // Create a simple hash of the data to detect changes
+        return JSON.stringify(data);
+    }
+
+    function loadGamesData() {
+        console.log('Fetching data...');
+        fetch(sheetUrl)
+            .then(response => response.json())
+            .then(data => {
+                console.log('Data received:', data);
+                const currentDataHash = getDataHash(data);
+                
+                // Only update if data has changed
+                if (currentDataHash === lastDataHash) {
+                    console.log('No changes detected, skipping update');
+                    return; // No changes, skip update
+                }
+                
+                console.log('Data changed, updating display');
+                lastDataHash = currentDataHash; // Update the hash
+                
+                const sportsContainer = document.getElementById('sports-container');
+                const rows = data.values;
+
+                // Create new content first
+                let newContent = '';
+                
+                if (!rows || rows.length === 0) {
+                    newContent = '<p style="color: #666; text-align: center; font-size: 1.2rem;">No teams currently active</p>';
+                } else {
+                    // Create a single container for all teams
+                    newContent = '<div class="sport-group">';
+                    
+                    // Render all teams in a single list
+                    rows.forEach(row => {
+                        // Ensure row has enough columns
+                        while (row.length < 12) {
+                            row.push('');
+                        }
+                        
+                        const teamName = row[0] || 'Team';
+                        const teamLogo = row[1] || '';
+                        const goldMedals = row[2] || '0';
+                        const silverMedals = row[3] || '0';
+                        const bronzeMedals = row[4] || '0';
+                        const totalPoints = row[5] || '0';
+                        const status = row[6] || 'Active';
+
+                        newContent += `
+                            <div class="team-card" style="padding: 20px; background-color: #f9f9f9; border-radius: 8px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); margin-bottom: 15px;">
+                                <div style="display: flex; align-items: center; justify-content: space-between;">
+                                    <!-- Left side: Team logo and name -->
+                                    <div style="display: flex; align-items: center; flex: 1;">
+                                        ${teamLogo ? `<img src="${teamLogo}" alt="${teamName}" style="width: 60px; height: 60px; border-radius: 50%; margin-right: 15px; object-fit: cover; border: 2px solid #ddd;">` : ''}
+                                        <div>
+                                            <div style="font-size: 24px; font-weight: bold; color: #333;">${teamName}</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Right side: Medals and points -->
+                                    <div style="display: flex; align-items: center; gap: 20px;">
+                                        <!-- Medals -->
+                                        <div style="display: flex; align-items: center; gap: 15px;">
+                                            <div style="text-align: center;">
+                                                <div style="font-size: 24px;">🥇</div>
+                                                <div style="font-size: 20px; font-weight: bold; color: #FFD700;">${goldMedals}</div>
+                                            </div>
+                                            <div style="text-align: center;">
+                                                <div style="font-size: 24px;">🥈</div>
+                                                <div style="font-size: 20px; font-weight: bold; color: #C0C0C0;">${silverMedals}</div>
+                                            </div>
+                                            <div style="text-align: center;">
+                                                <div style="font-size: 24px;">🥉</div>
+                                                <div style="font-size: 20px; font-weight: bold; color: #CD7F32;">${bronzeMedals}</div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Total Points -->
+                                        <div style="text-align: center; padding: 12px 18px; background-color: #e8f4f8; border-radius: 6px; border-left: 4px solid #2196F3;">
+                                            <div style="font-size: 14px; color: #666; margin-bottom: 4px;">TOTAL POINTS</div>
+                                            <div style="font-size: 32px; font-weight: bold; color: #2196F3;">${totalPoints}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Status bar -->
+                                <div style="margin-top: 15px; padding-top: 10px; border-top: 1px solid #eee; font-size: 12px; color: #666; text-align: right;">
+                                    Status: ${status}
+                                </div>
+                            </div>
+                        `;
+                    });
+                    
+                    newContent += '</div>';
+                }
+                
+                // Only update the DOM after content is ready
+                console.log('Updating DOM with new content');
+                sportsContainer.innerHTML = newContent;
+                console.log('DOM updated successfully');
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+                // Don't clear existing content on error, just log the error
+                console.log('Keeping existing content due to fetch error');
+            });
+    }
+
+    // Load data immediately
+    loadGamesData();
+
+    // Set up automatic updates
+    setInterval(loadGamesData, updateInterval);
+</script>
+
+<section data-bs-version="5.1" class="footer4 cid-uY4tHSNFfe" once="footers" id="footer04-q">
+
+    
+
+    
+
+    <div class="container">
+        <div class="media-container-row align-center mbr-white">
+            <div class="col-12">
+                <p class="mbr-text mb-0 mbr-fonts-style display-7">
+                    © Copyright 2025 TUD - All Rights Reserved
+                </p>
+            </div>
+        </div>
+    </div>
+</section><section class="display-7" style="padding: 0;align-items: center;justify-content: center;flex-wrap: wrap;    align-content: center;display: flex;position: relative;height: 4rem;"><a href="https://mobiri.se/3408938" style="flex: 1 1;height: 4rem;position: absolute;width: 100%;z-index: 1;"><img alt="" style="height: 4rem;" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="></a><p style="margin: 0;text-align: center;" class="display-7">&#8204;</p><a style="z-index:1" href="https://mobirise.com/builder/ai-website-maker.html">AI Website Maker</a></section><script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>  <script src="assets/smoothscroll/smooth-scroll.js"></script>  <script src="assets/ytplayer/index.js"></script>  <script src="assets/dropdown/js/navbar-dropdown.js"></script>  <script src="assets/theme/js/script.js"></script>  
+  
+  
+</body>
+</html>
