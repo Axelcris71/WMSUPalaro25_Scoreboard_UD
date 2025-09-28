@@ -1,0 +1,144 @@
+<section data-bs-version="5.1" class="content4">
+    <div class="mbr-overlay" style="opacity: 0.7; background-color: #ffffff;"></div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-10">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4" mbr-if="showTitle" data-app-selector=".mbr-section-title" mbr-theme-style="display-2">Happening Now</h3>
+                <div id="sports-container" class="sports-container d-flex flex-wrap justify-content-center">
+                    <!-- Intramural games will load here dynamically -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .sports-container {
+        display: flex;
+        flex-direction: column; /* Stack sports vertically */
+        align-items: center;    /* Center the sports */
+    }
+    .sport-group {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap; /* Allow wrapping to next line */
+        gap: 20px; /* Space between cards */
+        margin-bottom: 30px; /* Space between sport groups */
+        max-width: 100%;
+    }
+    .game-card {
+        flex: 1;
+        min-width: 300px;
+        max-width: 500px;
+    }
+</style>
+
+<script>
+    const sheetId = '1EJfto3fshSHuYLUwWLCb7JaDmFKQdXJlunMlyNOwYx8';  // Replace with your Google Sheet ID
+    const apiKey = 'AIzaSyB1A4QxXCsSpXPvZ0SNeLtJs6GnJJO-JyQ';       // Replace with your Google Sheets API key
+    const range = 'Sheet1!A2:L1000';                                     // Range for intramural sports data
+    const updateInterval = 2000; // Update every 2 seconds
+
+    const sheetUrl = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}?key=${apiKey}`;
+
+    let lastDataHash = null; // Store hash of last data to detect changes
+
+    function getDataHash(data) {
+        // Create a simple hash of the data to detect changes
+        return JSON.stringify(data);
+    }
+
+    function loadGamesData() {
+        console.log('Fetching data...');
+        fetch(sheetUrl)
+            .then(response => response.json())
+            .then(data => {
+                console.log('Data received:', data);
+                const currentDataHash = getDataHash(data);
+                
+                // Only update if data has changed
+                if (currentDataHash === lastDataHash) {
+                    console.log('No changes detected, skipping update');
+                    return; // No changes, skip update
+                }
+                
+                console.log('Data changed, updating display');
+                lastDataHash = currentDataHash; // Update the hash
+                
+                const sportsContainer = document.getElementById('sports-container');
+                const rows = data.values;
+
+                // Create new content first
+                let newContent = '';
+                
+                if (!rows || rows.length === 0) {
+                    newContent = '<p style="color: #666; text-align: center; font-size: 1.2rem;">No games currently happening</p>';
+                } else {
+                    // Create a single container for all games
+                    newContent = '<div class="sport-group">';
+                    
+                    // Render all games in a single list
+                    rows.forEach(row => {
+                        // Ensure row has enough columns
+                        while (row.length < 12) {
+                            row.push('');
+                        }
+                        
+                        const team1 = row[0] || 'Team 1';
+                        const team1Score = row[1] || '0';
+                        const team1Logo = row[2] || '';
+                        const team2 = row[4] || 'Team 2';
+                        const team2Score = row[5] || '0';
+                        const team2Logo = row[6] || '';
+                        const sportName = row[8] || 'Sport';
+                        const sportIcon = row[9] || '🏆';
+                        const gameType = row[10] || 'Match';
+                        const status = row[11] || 'In Progress';
+
+                        newContent += `
+                            <div class="game-card" style="padding: 15px; background-color: #f9f9f9; border-radius: 8px; text-align: center; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);">
+                                <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 10px;">
+                                    <span style="font-size: 20px; margin-right: 8px;">${sportIcon}</span>
+                                    <h5 style="font-size: 18px; margin: 0;">${sportName} - ${gameType}</h5>
+                                </div>
+                                <div style="display: flex; align-items: center; justify-content: space-between; margin: 15px 0;">
+                                    <div style="flex: 1; text-align: center;">
+                                        ${team1Logo ? `<img src="${team1Logo}" alt="${team1}" style="width: 40px; height: 40px; border-radius: 50%; margin-bottom: 5px; object-fit: cover;">` : ''}
+                                        <div style="font-size: 14px; font-weight: bold;">${team1}</div>
+                                        <div style="font-size: 24px; font-weight: bold; color: black;">${team1Score}</div>
+                                    </div>
+                                    <div style="font-size: 16px; color: gray; margin: 0 15px;">VS</div>
+                                    <div style="flex: 1; text-align: center;">
+                                        ${team2Logo ? `<img src="${team2Logo}" alt="${team2}" style="width: 40px; height: 40px; border-radius: 50%; margin-bottom: 5px; object-fit: cover;">` : ''}
+                                        <div style="font-size: 14px; font-weight: bold;">${team2}</div>
+                                        <div style="font-size: 24px; font-weight: bold; color: black;">${team2Score}</div>
+                                    </div>
+                                </div>
+                                <div style="margin-top: 10px; font-size: 14px; color: gray;">
+                                    ${status}
+                                </div>
+                            </div>
+                        `;
+                    });
+                    
+                    newContent += '</div>';
+                }
+                
+                // Only update the DOM after content is ready
+                console.log('Updating DOM with new content');
+                sportsContainer.innerHTML = newContent;
+                console.log('DOM updated successfully');
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+                // Don't clear existing content on error, just log the error
+                console.log('Keeping existing content due to fetch error');
+            });
+    }
+
+    // Load data immediately
+    loadGamesData();
+
+    // Set up automatic updates
+    setInterval(loadGamesData, updateInterval);
+</script>
