@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="assets/theme/css/style.css">
   <link rel="preload" href="https://fonts.googleapis.com/css?family=Inter+Tight:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter+Tight:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
-  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=2WH64x"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=2WH64x" type="text/css">
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=ySV00m"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=ySV00m" type="text/css">
 
   
   
@@ -97,18 +97,18 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="title col-md-12 col-lg-10">
-                
                 <div id="sports-container" class="sports-container d-flex flex-wrap justify-content-center">
                     <!-- Intramural games will load here dynamically -->
                 </div>
             </div>
         </div>
     </div>
-</section><style class="cid-uY5TbVoYf1" id="custom-html-r" data-rv-view="204">
+</section><style class="cid-uY5TbVoYf1" id="custom-html-r" data-rv-view="67">
     .sports-container {
         display: flex;
         flex-direction: column; /* Stack sports vertically */
         align-items: center;    /* Center the sports */
+        width: 100%;
     }
     .sport-group {
         display: flex;
@@ -117,13 +117,147 @@
         gap: 20px; /* Space between cards */
         margin-bottom: 30px; /* Space between sport groups */
         max-width: 100%;
+        width: 100%;
     }
     .team-card {
         width: 100%;
         max-width: 100%;
-        margin: 0 auto;
+        margin: 0 auto 15px auto; /* Ensure consistent spacing */
+        box-sizing: border-box;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
     }
-</style><script class="cid-uY5TbVoYf1" id="custom-html-r" data-rv-view="204">
+
+    /* Fix logo size on desktop */
+    .team-card img {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #ddd;
+        flex-shrink: 0;
+    }
+
+    /* Mobile optimizations */
+    @media (max-width: 768px) {
+        .sports-container {
+            padding: 0 10px; /* Add padding for edges */
+        }
+        .sport-group {
+            gap: 0; /* Remove gap on mobile since cards are full-width */
+            margin-bottom: 20px;
+        }
+        .team-card {
+            margin-bottom: 20px;
+            padding: 15px; /* Slightly less padding */
+        }
+        /* Stack main content vertically */
+        .team-card > div:first-child {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        /* Left side: logo and name */
+        .team-card > div:first-child > div:first-child {
+            flex-direction: row;
+            align-items: center;
+            width: 100%;
+            gap: 10px;
+        }
+        .team-card img {
+            width: 50px !important;
+            height: 50px !important;
+            margin-right: 10px;
+        }
+        .team-card > div:first-child > div:first-child > div {
+            font-size: 20px !important;
+            font-weight: bold;
+            color: #333;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            flex: 1;
+        }
+        /* Right side: medals and points */
+        .team-card > div:first-child > div:last-child {
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            gap: 15px;
+            width: 100%;
+        }
+        .team-card > div:first-child > div:last-child > div {
+            flex: 1 1 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            white-space: nowrap;
+        }
+        .team-card > div:first-child > div:last-child > div div:first-child {
+            font-size: 24px;
+        }
+        .team-card > div:first-child > div:last-child > div div:last-child {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        /* Total points styling */
+        .team-card > div:first-child > div:last-child > div:last-child {
+            background-color: #e8f4f8;
+            border-radius: 6px;
+            border-left: 4px solid #2196F3;
+            padding: 12px 18px;
+            text-align: center;
+            color: #2196F3;
+            font-weight: bold;
+            font-size: 32px;
+            white-space: nowrap;
+        }
+        .team-card > div:first-child > div:last-child > div:last-child > div:first-child {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 4px;
+            font-weight: normal;
+        }
+        /* Status bar adjustments */
+        .team-card > div:last-child {
+            font-size: 11px !important;
+            text-align: center;
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 1px solid #eee;
+            color: #666;
+        }
+    }
+
+    /* Very small screens adjustments */
+    @media (max-width: 480px) {
+        .team-card > div:first-child > div:last-child {
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        .team-card > div:first-child > div:last-child > div {
+            flex: none;
+            width: 100%;
+            justify-content: center;
+        }
+        .team-card > div:first-child > div:last-child > div:last-child {
+            font-size: 28px !important;
+        }
+    }
+
+    /* Tablet adjustments */
+    @media (min-width: 769px) and (max-width: 992px) {
+        .sport-group {
+            gap: 15px;
+        }
+        .team-card {
+            max-width: 48%; /* Two cards per row on tablet */
+        }
+    }
+</style><script class="cid-uY5TbVoYf1" id="custom-html-r" data-rv-view="67">
     const sheetId = '1EJfto3fshSHuYLUwWLCb7JaDmFKQdXJlunMlyNOwYx8';  // Replace with your Google Sheet ID
     const apiKey = 'AIzaSyB1A4QxXCsSpXPvZ0SNeLtJs6GnJJO-JyQ';       // Replace with your Google Sheets API key
     const range = 'GenScore!A2:G1000';                                     // Range for intramural sports data
@@ -176,43 +310,43 @@
                         
                         const teamName = row[0] || 'Team';
                         const teamLogo = row[1] || '';
-                        const goldMedals = row[2] || '0';
-                        const silverMedals = row[3] || '0';
-                        const bronzeMedals = row[4] || '0';
-                        const totalPoints = row[5] || '0';
+                        const goldMedals = row[3] || '0';
+                        const silverMedals = row[4] || '0';
+                        const bronzeMedals = row[5] || '0';
+                        const totalPoints = row[2] || '0';
                         const status = row[6] || 'Active';
 
                         newContent += `
-                            <div class="team-card" style="padding: 20px; background-color: #f9f9f9; border-radius: 8px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); margin-bottom: 15px;">
-                                <div style="display: flex; align-items: center; justify-content: space-between;">
+                            <div class="team-card">
+                                <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
                                     <!-- Left side: Team logo and name -->
-                                    <div style="display: flex; align-items: center; flex: 1;">
-                                        ${teamLogo ? `<img src="${teamLogo}" alt="${teamName}" style="width: 60px; height: 60px; border-radius: 50%; margin-right: 15px; object-fit: cover; border: 2px solid #ddd;">` : ''}
-                                        <div>
-                                            <div style="font-size: 24px; font-weight: bold; color: #333;">${teamName}</div>
+                                    <div style="display: flex; align-items: center; flex: 1; min-width: 0;">
+                                        ${teamLogo ? `<img src="${teamLogo}" alt="${teamName} logo">` : ''}
+                                        <div style="font-weight: bold; font-size: 24px; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1;">
+                                            ${teamName}
                                         </div>
                                     </div>
                                     
                                     <!-- Right side: Medals and points -->
-                                    <div style="display: flex; align-items: center; gap: 20px;">
+                                    <div style="display: flex; align-items: center; gap: 20px; flex-shrink: 0; flex-wrap: wrap;">
                                         <!-- Medals -->
-                                        <div style="display: flex; align-items: center; gap: 15px;">
-                                            <div style="text-align: center;">
+                                        <div style="display: flex; align-items: center; gap: 15px; flex-shrink: 0;">
+                                            <div style="text-align: center; white-space: nowrap;">
                                                 <div style="font-size: 24px;">🥇</div>
                                                 <div style="font-size: 20px; font-weight: bold; color: #FFD700;">${goldMedals}</div>
                                             </div>
-                                            <div style="text-align: center;">
+                                            <div style="text-align: center; white-space: nowrap;">
                                                 <div style="font-size: 24px;">🥈</div>
                                                 <div style="font-size: 20px; font-weight: bold; color: #C0C0C0;">${silverMedals}</div>
                                             </div>
-                                            <div style="text-align: center;">
+                                            <div style="text-align: center; white-space: nowrap;">
                                                 <div style="font-size: 24px;">🥉</div>
                                                 <div style="font-size: 20px; font-weight: bold; color: #CD7F32;">${bronzeMedals}</div>
                                             </div>
                                         </div>
                                         
                                         <!-- Total Points -->
-                                        <div style="text-align: center; padding: 12px 18px; background-color: #e8f4f8; border-radius: 6px; border-left: 4px solid #2196F3;">
+                                        <div style="text-align: center; padding: 12px 18px; background-color: #e8f4f8; border-radius: 6px; border-left: 4px solid #2196F3; flex-shrink: 0; white-space: nowrap;">
                                             <div style="font-size: 14px; color: #666; margin-bottom: 4px;">TOTAL POINTS</div>
                                             <div style="font-size: 32px; font-weight: bold; color: #2196F3;">${totalPoints}</div>
                                         </div>
@@ -264,7 +398,7 @@
             </div>
         </div>
     </div>
-</section><section class="display-7" style="padding: 0;align-items: center;justify-content: center;flex-wrap: wrap;    align-content: center;display: flex;position: relative;height: 4rem;"><a href="https://mobiri.se/3408938" style="flex: 1 1;height: 4rem;position: absolute;width: 100%;z-index: 1;"><img alt="" style="height: 4rem;" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="></a><p style="margin: 0;text-align: center;" class="display-7">&#8204;</p><a style="z-index:1" href="https://mobirise.com/offline-website-builder.html">Offline Website Creator</a></section><script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>  <script src="assets/smoothscroll/smooth-scroll.js"></script>  <script src="assets/ytplayer/index.js"></script>  <script src="assets/dropdown/js/navbar-dropdown.js"></script>  <script src="assets/theme/js/script.js"></script>  
+</section><section class="display-7" style="padding: 0;align-items: center;justify-content: center;flex-wrap: wrap;    align-content: center;display: flex;position: relative;height: 4rem;"><a href="https://mobiri.se/3408938" style="flex: 1 1;height: 4rem;position: absolute;width: 100%;z-index: 1;"><img alt="" style="height: 4rem;" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="></a><p style="margin: 0;text-align: center;" class="display-7">&#8204;</p><a style="z-index:1" href="https://mobirise.com/drag-drop-website-builder.html">Drag & Drop Website Builder</a></section><script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>  <script src="assets/smoothscroll/smooth-scroll.js"></script>  <script src="assets/ytplayer/index.js"></script>  <script src="assets/dropdown/js/navbar-dropdown.js"></script>  <script src="assets/theme/js/script.js"></script>  
   
   
 </body>
